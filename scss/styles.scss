@@ -1,0 +1,52 @@
+@import "colors";
+
+@mixin center-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; @include center-content; background: $white; }
+.sass-card {
+  width: min(700px, calc(100% - 32px));
+  min-height: 480px;
+  display: grid;
+  grid-template-columns: 2.4fr 1fr;
+  gap: 12px;
+  padding: 18px;
+  border: 1px solid #444;
+  background: $background;
+
+  &__answer {
+    @include center-content;
+    background: $left-panel;
+    color: $white;
+    h1 { font: bold 20px/1.1 Georgia, 'Times New Roman', serif; }
+  }
+  &__question {
+    @include center-content;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 30px 12px 8px;
+    background: $right-panel;
+    color: $white;
+    h2 { font: bold 20px/1.1 Georgia, 'Times New Roman', serif; }
+    button {
+      width: 120px;
+      padding: 12px;
+      border: 0;
+      border-radius: 10px;
+      background: $button;
+      color: $left-panel;
+      font: bold 16px Arial, sans-serif;
+      cursor: pointer;
+      &:focus-visible { outline: 3px solid #142a66; outline-offset: 3px; }
+    }
+  }
+}
+@media (max-width: 520px) {
+  .sass-card { min-height: 550px; grid-template-columns: 1fr; grid-template-rows: 2fr 1fr; }
+  .sass-card__question { flex-direction: row; padding: 16px; }
+}
